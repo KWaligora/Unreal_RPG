@@ -18,13 +18,6 @@ void ACharacterBase::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
-void ACharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
-
 // Called when the game starts or when spawned
 void ACharacterBase::BeginPlay()
 {
