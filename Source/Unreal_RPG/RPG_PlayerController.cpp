@@ -30,7 +30,7 @@ void ARPG_PlayerController::MoveToLocation(FVector Location)
 {
 	APawn* PlayerPawn = GetPawn();
 	if(PlayerPawn)
-	{
+	{		
 		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, Location);
 	}
 }
