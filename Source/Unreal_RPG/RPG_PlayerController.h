@@ -6,9 +6,6 @@
 #include "GameFramework/PlayerController.h"
 #include "RPG_PlayerController.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class UNREAL_RPG_API ARPG_PlayerController : public APlayerController
 {
@@ -16,9 +13,20 @@ class UNREAL_RPG_API ARPG_PlayerController : public APlayerController
 
 public:
 	ARPG_PlayerController();
+	virtual void Tick(float DeltaSeconds) override;
 
 protected:
-	virtual void SetupInputComponent() override;
+	// Functions
+	virtual void SetupInputComponent() override;	
+	// Calculate new destination and call MoveToLocation
+	void SetNewDestination();	
+	// If player click on map, set this location as destination
 	void OnSetDestinationPressed();
+	// If player release mouse click stop calculating destination
+	void OnSetDestinationReleased();
+	// Move player to location
 	void MoveToLocation(FVector Location);
+	
+	// Is player moving
+	bool bMoving;
 };

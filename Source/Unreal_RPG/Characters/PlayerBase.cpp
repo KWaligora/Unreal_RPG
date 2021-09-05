@@ -32,11 +32,6 @@ void APlayerBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void APlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
-
 void APlayerBase::BeginPlay()
 {
 	Super::BeginPlay();
