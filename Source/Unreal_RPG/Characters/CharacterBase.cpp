@@ -15,7 +15,7 @@ void ACharacterBase::BeginPlay()
 
 void ACharacterBase::HandleDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("CB"));
+	
 }
 
 // Sets default values

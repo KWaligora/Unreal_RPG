@@ -13,6 +13,7 @@ class UNREAL_RPG_API UHealthComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
+	// Create OnDeath event
 	DECLARE_EVENT( UHealthComponent, FDeathEvent )
 	FDeathEvent& OnDeath() { return DeathEvent; }
 	
@@ -31,6 +32,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	// Event Handle
 	FDeathEvent DeathEvent;
 	
 	// Variables

@@ -40,6 +40,5 @@ void APlayerBase::BeginPlay()
 void APlayerBase::HandleDeath()
 {
 	Super::HandleDeath();
-
-	UE_LOG(LogTemp, Warning, TEXT("child"));
+	
 }

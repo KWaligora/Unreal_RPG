@@ -14,6 +14,7 @@
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FSetMaxHealthTest, "Gameplay.Core.HealthComponent.Player starts with max health", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::CriticalPriority | EAutomationTestFlags::ProductFilter)
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FDealDamageTest, "Gameplay.Core.HealthComponent.Deal damage to player", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::CriticalPriority | EAutomationTestFlags::ProductFilter)
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FKillPlayer, "Gameplay.Core.HealthComponent.Kill player", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::CriticalPriority | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FNegativeDamage, "Gameplay.Core.HealthComponent.Can't recive negative damage", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::HighPriority | EAutomationTestFlags::ProductFilter)
 
 bool FSetMaxHealthTest::RunTest(const FString& Parameters)
 {
@@ -61,8 +62,30 @@ bool FKillPlayer::RunTest(const FString& Parameters)
 
 		// Set
 		HealthComponent->TakeDamage(Player, HealthComponent->GetMaxHealth(), DamageType, nullptr, nullptr);
+
+		// Check
 		TestFalse(TEXT("Player die after lost all HP"), HealthComponent->IsOwnerAlive());
 		Player->Destroy();
 	}
 	return true;
 }
+
+bool FNegativeDamage::RunTest(const FString& Parameters)
+{
+	UWorld* World = FAutomationEditorCommonUtils::CreateNewMap();
+	{
+		// Get
+		APlayerBase* Player = World->SpawnActor<APlayerBase>();
+		UHealthComponent* HealthComponent = Player->GetHealthComponent();
+		UPhysical_DT* DamageType = Cast<UPhysical_DT>(UPhysical_DT::StaticClass());
+
+		//Set
+		HealthComponent->TakeDamage(Player, -20.0f, DamageType, nullptr, nullptr);
+
+		// Check
+		TestEqual(TEXT("Player can't recive negative damage"), HealthComponent->GetMaxHealth(), HealthComponent->GetCurrentHealth());
+		Player->Destroy();
+	}
+	return true;
+}
+
