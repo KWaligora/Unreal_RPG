@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "CharacterBase.generated.h"
 
+class UHealthComponent;
+
 UCLASS()
 class UNREAL_RPG_API ACharacterBase : public ACharacter
 {
@@ -16,14 +18,22 @@ public:
 	// Sets default values for this character's properties
 	ACharacterBase();
 	
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;	
+	
+public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
+	UHealthComponent* GetHealthComponent();
+
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	// called on character death
+	virtual void HandleDeath();
 	
+private:
+	// Components
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UHealthComponent* HealthComponent;
 };

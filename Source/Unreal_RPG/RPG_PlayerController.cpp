@@ -26,6 +26,8 @@ void ARPG_PlayerController::SetupInputComponent()
 	InputComponent->BindAction("SetDestination", IE_Pressed, this, &ARPG_PlayerController::OnSetDestinationPressed);
 	InputComponent->BindAction("SetDestination", IE_Released, this, &ARPG_PlayerController::OnSetDestinationReleased);
 }
+
+#pragma region Movement
 // Calculate new destination and call MoveToLocation
 void ARPG_PlayerController::SetNewDestination()
 {
@@ -56,3 +58,4 @@ void ARPG_PlayerController::MoveToLocation(FVector Location)
 		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, Location);
 	}
 }
+#pragma endregion Movement
