@@ -30,5 +30,5 @@ private:
 	UPROPERTY(EditAnywhere)
 	USpringArmComponent* SpringArm;
 	UPROPERTY(EditAnywhere)
-	UCameraComponent* Camera;	
+	UCameraComponent* Camera;
 };

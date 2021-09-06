@@ -4,14 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "CharacterBase.h"
+#include "Unreal_RPG/Core/DamageTypes/Physical_DT.h"
 #include "EnemyBase.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class UNREAL_RPG_API AEnemyBase : public ACharacterBase
 {
 	GENERATED_BODY()
+public:
 	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UDamageType> DamageType = TSubclassOf<UDamageType>(UPhysical_DT::StaticClass());
+
+	virtual void Tick(float DeltaSeconds) override;
+protected:
+	virtual void BeginPlay() override;
 };
