@@ -22,6 +22,11 @@ float UHealthComponent::GetMaxHealth()
 	return MaxHealth;
 }
 
+bool UHealthComponent::IsOwnerAlive() const
+{
+	return IsAlive;
+}
+
 // Called when the game starts
 void UHealthComponent::BeginPlay()
 {
@@ -31,12 +36,17 @@ void UHealthComponent::BeginPlay()
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
 }
 
+void UHealthComponent::OnDeath()
+{
+	IsAlive = false;
+}
+
 void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
-	AController* InstigatedBy, AActor* DamageCauser)
+                                  AController* InstigatedBy, AActor* DamageCauser)
 {	
 	if(Damage <= 0 || CurrentHealth <= 0) return;
 	
-	CurrentHealth = FMath::Clamp(CurrentHealth - Damage, 0.0f, MaxHealth);
-	UE_LOG(LogTemp, Warning, TEXT("Current hp: %f"), CurrentHealth);	
+	CurrentHealth = FMath::Clamp(CurrentHealth - Damage, 0.0f, MaxHealth);	
+	if(CurrentHealth <= 0) OnDeath();	
 }
 

@@ -17,16 +17,23 @@ public:
 	UHealthComponent();
 	float GetCurrentHealth();
 	float GetMaxHealth();
+	UFUNCTION(BlueprintPure)
+	bool IsOwnerAlive() const;
+
+	UFUNCTION()
+	void TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser);
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UFUNCTION()
-	void TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser);
-
 private:
+	// Variables
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100.0f;
 	float CurrentHealth;
+	bool IsAlive = true;
+
+	// Functions
+	void OnDeath();
 };
