@@ -27,14 +27,14 @@ APlayerBase::APlayerBase()
 	GetCharacterMovement()->bSnapToPlaneAtStart = true;
 }
 
-void APlayerBase::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
-
 void APlayerBase::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void APlayerBase::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
 }
 
 void APlayerBase::HandleDeath()

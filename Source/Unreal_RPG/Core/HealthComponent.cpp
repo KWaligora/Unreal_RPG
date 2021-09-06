@@ -12,6 +12,15 @@ UHealthComponent::UHealthComponent()
 	CurrentHealth = MaxHealth;
 }
 
+// Called when the game starts
+void UHealthComponent::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// Register TakeDamage function on take damage
+	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
+}
+
 float UHealthComponent::GetCurrentHealth()
 {
 	return CurrentHealth;
@@ -25,15 +34,6 @@ float UHealthComponent::GetMaxHealth()
 bool UHealthComponent::IsOwnerAlive() const
 {
 	return IsAlive;
-}
-
-// Called when the game starts
-void UHealthComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// Register TakeDamage function on take damage
-	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
 }
 
 void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,

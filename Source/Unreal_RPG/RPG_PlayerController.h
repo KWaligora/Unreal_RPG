@@ -16,8 +16,10 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 protected:
-	// Functions
-	virtual void SetupInputComponent() override;	
+// Functions
+	virtual void SetupInputComponent() override;
+	
+#pragma region Movement
 	// Calculate new destination and call MoveToLocation
 	void SetNewDestination();	
 	// If player click on map, set this location as destination
@@ -29,4 +31,5 @@ protected:
 	
 	// Is player moving
 	bool bMoving;
+#pragma endregion Movement
 };

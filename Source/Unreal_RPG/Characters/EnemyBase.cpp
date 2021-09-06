@@ -5,12 +5,12 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
-void AEnemyBase::Tick(float DeltaSeconds)
-{
-	Super::Tick(DeltaSeconds);
-}
-
 void AEnemyBase::BeginPlay()
 {
 	Super::BeginPlay();		
+}
+
+void AEnemyBase::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
 }

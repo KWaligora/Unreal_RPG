@@ -19,6 +19,12 @@ public:
 	
 	// Sets default values for this component's properties
 	UHealthComponent();
+
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+public:
 	float GetCurrentHealth();
 	float GetMaxHealth();
 	UFUNCTION(BlueprintPure)
@@ -26,10 +32,6 @@ public:
 
 	UFUNCTION()
 	void TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser);
-
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
 
 private:
 	// Event Handle

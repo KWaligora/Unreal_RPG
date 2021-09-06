@@ -4,6 +4,16 @@
 #include "CharacterBase.h"
 #include "Unreal_RPG/Core/HealthComponent.h"
 
+// Sets default values
+ACharacterBase::ACharacterBase()
+{
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+	
+	// Components
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
+}
+
 // Called when the game starts or when spawned
 void ACharacterBase::BeginPlay()
 {
@@ -11,21 +21,6 @@ void ACharacterBase::BeginPlay()
 
 	// Bind Function to event	
 	HealthComponent->OnDeath().AddUObject(this, &ACharacterBase::HandleDeath);
-}
-
-void ACharacterBase::HandleDeath()
-{
-	
-}
-
-// Sets default values
-ACharacterBase::ACharacterBase()
-{
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-	
-	// Components
-	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 }
 
 // Called every frame
@@ -37,4 +32,9 @@ void ACharacterBase::Tick(float DeltaTime)
 UHealthComponent* ACharacterBase::GetHealthComponent()
 {
 	return HealthComponent;
+}
+
+void ACharacterBase::HandleDeath()
+{
+	
 }

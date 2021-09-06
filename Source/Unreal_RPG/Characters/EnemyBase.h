@@ -11,12 +11,16 @@ UCLASS()
 class UNREAL_RPG_API AEnemyBase : public ACharacterBase
 {
 	GENERATED_BODY()
+
+protected:
+	virtual void BeginPlay() override;
+	
 public:
+	virtual void Tick(float DeltaSeconds) override;
 	
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UDamageType> DamageType = TSubclassOf<UDamageType>(UPhysical_DT::StaticClass());
 
-	virtual void Tick(float DeltaSeconds) override;
-protected:
-	virtual void BeginPlay() override;
+	
+
 };

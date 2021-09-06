@@ -17,14 +17,14 @@ class UNREAL_RPG_API APlayerBase : public ACharacterBase
 	public:
 	// Sets default values for this character's properties
 	APlayerBase();
+
+	protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void HandleDeath() override;
-	
-	protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 private:
 	// Components
