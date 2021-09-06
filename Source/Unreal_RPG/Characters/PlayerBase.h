@@ -20,6 +20,7 @@ class UNREAL_RPG_API APlayerBase : public ACharacterBase
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual void HandleDeath() override;
 	
 	protected:
 	// Called when the game starts or when spawned

@@ -36,17 +36,16 @@ void UHealthComponent::BeginPlay()
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
 }
 
-void UHealthComponent::OnDeath()
-{
-	IsAlive = false;
-}
-
 void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
                                   AController* InstigatedBy, AActor* DamageCauser)
 {	
 	if(Damage <= 0 || CurrentHealth <= 0) return;
 	
 	CurrentHealth = FMath::Clamp(CurrentHealth - Damage, 0.0f, MaxHealth);	
-	if(CurrentHealth <= 0) OnDeath();	
+	if(CurrentHealth <= 0)
+	{
+		IsAlive = false;
+		DeathEvent.Broadcast();
+	}
 }
 

@@ -7,7 +7,15 @@
 // Called when the game starts or when spawned
 void ACharacterBase::BeginPlay()
 {
-	Super::BeginPlay();	
+	Super::BeginPlay();
+
+	// Bind Function to event	
+	HealthComponent->OnDeath().AddUObject(this, &ACharacterBase::HandleDeath);
+}
+
+void ACharacterBase::HandleDeath()
+{
+	UE_LOG(LogTemp, Warning, TEXT("CB"));
 }
 
 // Sets default values

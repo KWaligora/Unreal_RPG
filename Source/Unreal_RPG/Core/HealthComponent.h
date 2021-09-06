@@ -12,7 +12,10 @@ class UNREAL_RPG_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
+	DECLARE_EVENT( UHealthComponent, FDeathEvent )
+	FDeathEvent& OnDeath() { return DeathEvent; }
+	
 	// Sets default values for this component's properties
 	UHealthComponent();
 	float GetCurrentHealth();
@@ -28,12 +31,11 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	FDeathEvent DeathEvent;
+	
 	// Variables
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100.0f;
 	float CurrentHealth;
 	bool IsAlive = true;
-
-	// Functions
-	void OnDeath();
 };
