@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Core/InventoryComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "RPG_PlayerController.generated.h"
 
@@ -14,6 +15,7 @@ class UNREAL_RPG_API ARPG_PlayerController : public APlayerController
 public:
 	ARPG_PlayerController();
 	virtual void Tick(float DeltaSeconds) override;
+	
 
 protected:
 // Functions
