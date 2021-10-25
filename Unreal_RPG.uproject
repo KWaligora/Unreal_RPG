@@ -10,6 +10,7 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"Engine",
+				"FunctionalTesting"
 			]
 		},
 		{
@@ -17,7 +18,8 @@
 			"Type": "Editor",
 			"LoadingPhase": "PostEngineInit",
 			"AdditionalDependencies": [
-				"FunctionalTesting"
+				"Engine",
+				"FunctionalTesting"			
 			]
 		}
 	],
