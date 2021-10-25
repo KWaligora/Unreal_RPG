@@ -10,6 +10,13 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"Engine",
+			]
+		},
+		{
+			"Name": "Unreal_RPG_Tests",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit",
+			"AdditionalDependencies": [
 				"FunctionalTesting"
 			]
 		}
