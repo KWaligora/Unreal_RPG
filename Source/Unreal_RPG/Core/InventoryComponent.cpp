@@ -2,7 +2,7 @@
 
 
 #include "InventoryComponent.h"
-
+#include "InventorySystem/InventoryWidget.h"
 #include "Blueprint/UserWidget.h"
 
 // Sets default values for this component's properties
@@ -21,12 +21,8 @@ void UInventoryComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// Create InventoryWidget
-	InventoryWidget = CreateWidget(GetWorld()->GetFirstPlayerController(), InventoryWidgetClass);
-	if(InventoryWidget == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("InventoryWidged null reference"));
-		return;
-	}
+	InventoryWidget = Cast<UInventoryWidget>(CreateWidget(GetWorld()->GetFirstPlayerController(), InventoryWidgetClass));
+	if(InventoryWidget == nullptr) return;
 	InventoryWidget->AddToViewport();
 	InventoryWidget->SetVisibility(ESlateVisibility::Hidden);	
 }
@@ -40,7 +36,9 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 }
 // Show/Hide inventory
 void UInventoryComponent::ToggleInventoryWidget()
-{	
+{
+	if(InventoryWidget == nullptr) return;
+	
 	// Open/Close
 	if(!bIsOpened)
 	{

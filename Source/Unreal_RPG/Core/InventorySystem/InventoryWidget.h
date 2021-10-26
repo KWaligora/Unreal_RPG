@@ -10,10 +10,14 @@ UCLASS()
 class UNREAL_RPG_API UInventoryWidget : public UUserWidget
 {
 	GENERATED_BODY()
-
-	virtual void NativeOnInitialized() override;
-
+		
+public:
+	FVector2D GridSize = FVector2D(5, 15);
+	
 private:
 	UPROPERTY(meta = (BindWidget))
 	class UInventoryGrid* WPB_InventoryGrid;	
+
+protected:
+	virtual void NativeOnInitialized() override;
 };

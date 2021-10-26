@@ -11,5 +11,5 @@ void UInventoryWidget::NativeOnInitialized()
 
 	if(WPB_InventoryGrid == nullptr) return;
 
-	WPB_InventoryGrid->CreateGrid(FVector2D(5,15));
+	WPB_InventoryGrid->CreateGrid(FVector2D(GridSize));
 }

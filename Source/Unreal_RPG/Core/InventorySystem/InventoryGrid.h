@@ -6,8 +6,6 @@
 #include "Blueprint/UserWidget.h"
 #include "InventoryGrid.generated.h"
 
-class UInventoryComponent;
-
 UCLASS()
 class UNREAL_RPG_API UInventoryGrid : public UUserWidget
 {

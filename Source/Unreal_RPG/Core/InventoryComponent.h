@@ -34,5 +34,5 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UUserWidget> InventoryWidgetClass;
 	UPROPERTY()
-	UUserWidget* InventoryWidget;
+	class UInventoryWidget* InventoryWidget;
 };
