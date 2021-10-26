@@ -15,7 +15,6 @@ UInventoryComponent::UInventoryComponent()
 	// ...
 }
 
-
 // Called when the game starts
 void UInventoryComponent::BeginPlay()
 {
@@ -41,8 +40,7 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 }
 // Show/Hide inventory
 void UInventoryComponent::ToggleInventoryWidget()
-{
-	
+{	
 	// Open/Close
 	if(!bIsOpened)
 	{
@@ -53,7 +51,6 @@ void UInventoryComponent::ToggleInventoryWidget()
 	{
 		InventoryWidget->SetVisibility(ESlateVisibility::Hidden);
 		bIsOpened = false;
-	}
-	
+	}	
 }
 

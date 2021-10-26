@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Core/InventoryComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "RPG_PlayerController.generated.h"
 

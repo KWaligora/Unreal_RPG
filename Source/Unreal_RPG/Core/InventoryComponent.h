@@ -28,7 +28,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	// Show/Hide inventory
 	void ToggleInventoryWidget();
-
+	
 private:
 // Variables
 	UPROPERTY(EditAnywhere)

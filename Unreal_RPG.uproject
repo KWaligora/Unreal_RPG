@@ -10,7 +10,7 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"Engine",
-				"FunctionalTesting"
+				"UMG"
 			]
 		},
 		{
@@ -19,7 +19,7 @@
 			"LoadingPhase": "PostEngineInit",
 			"AdditionalDependencies": [
 				"Engine",
-				"FunctionalTesting"			
+				"FunctionalTesting"
 			]
 		}
 	],
