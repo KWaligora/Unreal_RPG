@@ -15,6 +15,7 @@ class UNREAL_RPG_API UInventoryGrid : public UUserWidget
 
 public:
 	void CreateGrid(FVector2D GridSize);
+	// Called by blueprint OnPaint event
 	UFUNCTION(BlueprintCallable)
 	void Paint(FPaintContext Context) const;
 	
@@ -24,6 +25,6 @@ private:
 	class UBorder* GridBorder;
 	
 	float TileSize = 50.0;
-
+	//Grid Lines
 	TArray<FVector4> Lines;
 };

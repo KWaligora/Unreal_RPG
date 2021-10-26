@@ -9,7 +9,7 @@ void UInventoryWidget::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
 
-	if(InventoryGrid == nullptr) return;
+	if(WPB_InventoryGrid == nullptr) return;
 
-	InventoryGrid->CreateGrid(FVector2D(5,15));
+	WPB_InventoryGrid->CreateGrid(FVector2D(5,15));
 }

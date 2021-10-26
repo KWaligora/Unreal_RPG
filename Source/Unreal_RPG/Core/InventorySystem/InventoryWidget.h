@@ -15,5 +15,5 @@ class UNREAL_RPG_API UInventoryWidget : public UUserWidget
 
 private:
 	UPROPERTY(meta = (BindWidget))
-	class UInventoryGrid* InventoryGrid;	
+	class UInventoryGrid* WPB_InventoryGrid;	
 };
