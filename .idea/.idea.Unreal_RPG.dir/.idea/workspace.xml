@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0b4b615-505c-4534-a3b5-03f88f00467c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Game/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Game/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/WBP_Inventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/WBP_Inventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/WPB_InventoryGrid.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/WPB_InventoryGrid.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Characters/PlayerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Characters/PlayerBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryWidget.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unreal_RPG.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/Unreal_RPG.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635331273950</updated>
       <workItem from="1635331322796" duration="9362000" />
-      <workItem from="1635410083388" duration="11769000" />
+      <workItem from="1635410083388" duration="14539000" />
     </task>
     <servers />
   </component>
@@ -115,16 +104,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/Unreal_RPG/Items/ItemBase.cpp</url>
-          <line>49</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

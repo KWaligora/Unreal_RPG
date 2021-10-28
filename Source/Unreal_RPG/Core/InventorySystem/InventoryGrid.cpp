@@ -5,13 +5,16 @@
 
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Components/Border.h"
+#include "Components/CanvasPanel.h"
 #include "Components/CanvasPanelSlot.h"
+#include "Unreal_RPG/Core/InventoryComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Unreal_RPG/Characters/PlayerBase.h"
 
 void UInventoryGrid::CreateGrid(FVector2D GridSize)
 {
-	if(GridBorder == nullptr) return;	
+	if(GridBorder == nullptr) return;		
 	
-	//UE_LOG(LogTemp, Warning, TEXT("%f,%f"), GridBorder->GetDesiredSize().X, GridBorder->GetDesiredSize().Y);
 	UCanvasPanelSlot* GridBorderSlot = Cast<UCanvasPanelSlot>(GridBorder->Slot);
 	GridBorderSlot->SetSize(GridSize * TileSize);
 
@@ -38,6 +41,29 @@ void UInventoryGrid::Paint(FPaintContext Context) const
 	{
 		UWidgetBlueprintLibrary::DrawLine(Context, FVector2D(Line.X, Line.Y) + LocalTopLeft, FVector2D(Line.Z, Line.W) + LocalTopLeft, FLinearColor(0.5,0.5,0.5, 0.5));
 	}	
+}
+
+// Getting inventory component
+void UInventoryGrid::NativeOnInitialized()
+{
+	Super::NativeOnInitialized();
+	TArray<AActor*> Actors;
+	TSubclassOf<APlayerBase> PlayerClass = APlayerBase::StaticClass();
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), PlayerClass, Actors);
+	for (AActor* Actor : Actors)
+	{
+		APlayerBase* PlayerBase = Cast<APlayerBase>(Actor);
+		if(PlayerBase != nullptr)
+		{
+			InventoryComponent = PlayerBase->GetInventory();
+			UE_LOG(LogTemp, Warning, TEXT("work"));
+		}
+	}
+}
+
+void UInventoryGrid::Refresh()
+{
+	//GridCanvasPanel->ClearChildren();
 }
 
 
