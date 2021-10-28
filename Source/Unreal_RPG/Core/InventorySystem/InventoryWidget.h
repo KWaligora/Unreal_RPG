@@ -11,12 +11,15 @@ class UNREAL_RPG_API UInventoryWidget : public UUserWidget
 {
 	GENERATED_BODY()
 		
-public:
-	FVector2D GridSize = FVector2D(5, 15);
+public:	
+	FVector2D GetGridSize() {return GridSize;}
 	
 private:
 	UPROPERTY(meta = (BindWidget))
-	class UInventoryGrid* WPB_InventoryGrid;	
+	class UInventoryGrid* WPB_InventoryGrid;
+
+	// Columns/Rows
+	FVector2D GridSize = FVector2D(15, 5);
 
 protected:
 	virtual void NativeOnInitialized() override;

@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "InventoryComponent.generated.h"
 
+class UItemData;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class UNREAL_RPG_API UInventoryComponent : public UActorComponent
@@ -28,11 +29,23 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	// Show/Hide inventory
 	void ToggleInventoryWidget();
+	bool AddItem(UItemData* ItemData);
 	
 private:
 // Variables
+	// Widgets
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UUserWidget> InventoryWidgetClass;
 	UPROPERTY()
 	class UInventoryWidget* InventoryWidget;
+
+	TArray<UItemData*> ItemsArray;
+	bool NeedReload = false;
+	
+// Functions
+	bool IsRoomAvailable(UItemData *ItemData, int TopLeftIndex);
+	FVector2D IndexToTile(int Index);
+	int TileToIndex(FVector2D Tile);
+	UItemData* GetItemAtIndex(int Index);
+	
 };

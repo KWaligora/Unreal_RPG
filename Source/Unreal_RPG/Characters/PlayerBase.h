@@ -29,7 +29,8 @@ protected:
 
 public:
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
-	UInventoryComponent* GetInventory() { return Inventory; }
+	UFUNCTION(BlueprintCallable)
+	UInventoryComponent* GetInventory() const { return Inventory; }
 
 private:
 	// Components
@@ -39,6 +40,4 @@ private:
 	UCameraComponent* Camera;
 	UPROPERTY(EditAnywhere)
 	UInventoryComponent* Inventory;
-
-
 };

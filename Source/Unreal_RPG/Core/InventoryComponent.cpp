@@ -4,6 +4,7 @@
 #include "InventoryComponent.h"
 #include "InventorySystem/InventoryWidget.h"
 #include "Blueprint/UserWidget.h"
+#include "Unreal_RPG/Items/ItemData.h"
 
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
@@ -24,7 +25,9 @@ void UInventoryComponent::BeginPlay()
 	InventoryWidget = Cast<UInventoryWidget>(CreateWidget(GetWorld()->GetFirstPlayerController(), InventoryWidgetClass));
 	if(InventoryWidget == nullptr) return;
 	InventoryWidget->AddToViewport();
-	InventoryWidget->SetVisibility(ESlateVisibility::Hidden);	
+	InventoryWidget->SetVisibility(ESlateVisibility::Hidden);
+
+	ItemsArray.SetNum(InventoryWidget->GetGridSize().X * InventoryWidget->GetGridSize().Y);
 }
 
 // Called every frame
@@ -50,5 +53,89 @@ void UInventoryComponent::ToggleInventoryWidget()
 		InventoryWidget->SetVisibility(ESlateVisibility::Hidden);
 		bIsOpened = false;
 	}	
+}
+
+bool UInventoryComponent::AddItem(UItemData* ItemData)
+{
+	if(ItemData == nullptr) return false;
+
+	int Index = 0;
+	for (UItemData* Item : ItemsArray)
+	{
+		if(IsRoomAvailable(ItemData, Index))
+		{
+			FVector2D Tile = IndexToTile(Index);
+			FVector2D ItemDimension = ItemData->GetDimensions();
+
+			int end = Tile.X + ItemDimension.X - 1;
+			for (int i = Tile.X; i < end; i++)
+			{
+				for(int j = Tile.Y; j < Tile.Y + ItemDimension.Y; j++)
+				{
+					int ItemArrayIndex =  TileToIndex(FVector2D(i,j));
+					ItemsArray[ItemArrayIndex] = ItemData;
+				}
+			}
+			NeedReload = true;
+			return true;
+		}
+		Index++;
+	}	
+	return false;
+}
+
+bool UInventoryComponent::IsRoomAvailable(UItemData *ItemData, int TopLeftIndex)
+{
+	FVector2D Tile = IndexToTile(TopLeftIndex);
+	FVector2D ItemDimension = ItemData->GetDimensions();
+	
+	int end = Tile.X + ItemDimension.X - 1;
+	for (int i = Tile.X; i < end; i++)
+	{
+		for(int j = Tile.Y; j < Tile.Y + ItemDimension.Y; j++)
+		{
+			if(i >= 0 && j >= 0)
+			{
+				// Check if we found valid item at current index
+				UItemData* Item = GetItemAtIndex(TileToIndex(FVector2D(i,j)));
+				if(IsValid(Item))
+				{
+					return false;
+				}
+			}
+			else return false;
+		}
+	}
+	return true;
+}
+
+FVector2D UInventoryComponent::IndexToTile(int Index)
+{
+	if(InventoryWidget == nullptr) return FVector2D(0,0);
+	
+	FVector2D GridSize = InventoryWidget->GetGridSize();
+
+	int Columns =  GridSize.X;
+	int Rows = GridSize.Y;
+	
+	return FVector2D(Index % Columns, Index % Rows);
+}
+
+int UInventoryComponent::TileToIndex(FVector2D Tile)
+{
+	if(InventoryWidget == nullptr) return 0;
+
+	FVector2D GridSize = InventoryWidget->GetGridSize();
+
+	return Tile.X + Tile.Y * GridSize.X;
+}
+
+UItemData* UInventoryComponent::GetItemAtIndex(int Index)
+{
+	if( ItemsArray.IsValidIndex(Index))
+	{		
+		return ItemsArray[Index];
+	}
+	return nullptr;
 }
 

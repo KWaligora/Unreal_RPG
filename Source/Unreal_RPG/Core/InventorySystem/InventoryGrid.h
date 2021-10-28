@@ -12,6 +12,7 @@ class UNREAL_RPG_API UInventoryGrid : public UUserWidget
 	GENERATED_BODY()
 
 public:
+	
 	void CreateGrid(FVector2D GridSize);
 	// Called by blueprint OnPaint event
 	UFUNCTION(BlueprintCallable)
