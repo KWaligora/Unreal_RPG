@@ -15,8 +15,9 @@ class UNREAL_RPG_API UInventoryGrid : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UInventoryGrid(const FObjectInitializer & ObjectInitializer);
-	
+	// Getting ItemWidgetClass
+	UInventoryGrid(const FObjectInitializer & ObjectInitializer);	
+
 	void CreateGrid(FVector2D GridSize);
 	
 	// Called by blueprint OnPaint event
@@ -27,6 +28,8 @@ private:
 // Functions
 	// Getting inventory component
 	virtual void NativeOnInitialized() override;
+	void DrawLines(FVector2D GridSize);
+	// Refreshing grid - items in inventory
 	void Refresh();
 	void OnItemRemoved(UItemData* ItemData);
 

@@ -12,7 +12,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Unreal_RPG/Characters/PlayerBase.h"
 
-
+// Getting ItemWidgetClass
 UInventoryGrid::UInventoryGrid(const FObjectInitializer & ObjectInitializer) : Super(ObjectInitializer)
 {	
 	ConstructorHelpers::FClassFinder<UUserWidget> ItemWidgetBPClass(TEXT("/Game/UI/Inventory/WBP_Item"));
@@ -28,6 +28,13 @@ void UInventoryGrid::CreateGrid(FVector2D GridSize)
 	UCanvasPanelSlot* GridBorderSlot = Cast<UCanvasPanelSlot>(GridBorder->Slot);
 	GridBorderSlot->SetSize(GridSize * TileSize);
 
+	DrawLines(GridSize);
+	Refresh();
+	InventoryComponent->OnInventoryChanged().AddUObject(this, &UInventoryGrid::Refresh);
+}
+
+void UInventoryGrid::DrawLines(FVector2D GridSize)
+{
 	// Vertical Lines
 	for(int i = 0; i < GridSize.X; i++)
 	{		
@@ -40,9 +47,8 @@ void UInventoryGrid::CreateGrid(FVector2D GridSize)
 		float LineY = i*TileSize;
 		Lines.Add(FVector4(0.0, LineY, TileSize * GridSize.X, LineY));
 	}
-	Refresh();
-	InventoryComponent->OnInventoryChanged().AddUObject(this, &UInventoryGrid::Refresh);
 }
+
 // Called by blueprint OnPaint event
 void UInventoryGrid::Paint(FPaintContext Context) const
 {	
@@ -74,7 +80,7 @@ void UInventoryGrid::NativeOnInitialized()
 	
 	ItemsWidget.SetNum(100);	
 }
-
+// Refreshing grid - items in inventory
 void UInventoryGrid::Refresh()
 {
 	if(InventoryComponent == nullptr || GridCanvasPanel == nullptr) return;
