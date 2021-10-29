@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0b4b615-505c-4534-a3b5-03f88f00467c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/WPB_Item.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Items/ItemData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Items/ItemData.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/UI/Inventory/WBP_Item.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +93,7 @@
       <workItem from="1635410083388" duration="17120000" />
       <workItem from="1635431981197" duration="3849000" />
       <workItem from="1635501432516" duration="7078000" />
-      <workItem from="1635509325739" duration="3140000" />
+      <workItem from="1635509325739" duration="3464000" />
     </task>
     <servers />
   </component>
