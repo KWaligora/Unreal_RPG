@@ -92,13 +92,13 @@ void UInventoryGrid::Refresh()
 		ItemsWidget[Index] = Cast<UItemWidget>(CreateWidget(GetWorld()->GetFirstPlayerController(), ItemWidgetClass));
 		ItemsWidget[Index]->Initialise(TileSize, Key);	
 		ItemsWidget[Index]->OnRemove().AddUObject(this, &UInventoryGrid::OnItemRemoved);
-		GridCanvasPanel->AddChild(ItemsWidget[Index]);
-		
-
-		if(UCanvasPanelSlot* GridCanvasSlot = Cast<UCanvasPanelSlot>(GridCanvasPanel->Slot))
+		if(UPanelSlot* PanelSlot = GridCanvasPanel->AddChild(ItemsWidget[Index]))
 		{
-			GridCanvasSlot->SetAutoSize(true);
-			GridCanvasSlot->SetPosition(AllItems[Key] * TileSize);
+			if(UCanvasPanelSlot* ChildSlot = Cast<UCanvasPanelSlot>(PanelSlot))
+			{
+				ChildSlot->SetAutoSize(true);
+				ChildSlot->SetPosition(AllItems[Key] * TileSize);
+			}
 		}		
 		Index++;
 	}

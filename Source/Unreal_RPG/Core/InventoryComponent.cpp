@@ -27,7 +27,9 @@ void UInventoryComponent::BeginPlay()
 	InventoryWidget->AddToViewport();
 	InventoryWidget->SetVisibility(ESlateVisibility::Hidden);
 
-	ItemsArray.SetNum(InventoryWidget->GetGridSize().X * InventoryWidget->GetGridSize().Y);
+	GridSize = InventoryWidget->GetGridSize();
+	
+	ItemsArray.SetNum(GridSize.X * GridSize.Y);
 }
 
 // Called every frame
@@ -71,13 +73,16 @@ bool UInventoryComponent::AddItem(UItemData* ItemData )
 			FVector2D Tile = IndexToTile(Index);
 			FVector2D ItemDimension = ItemData->GetDimensions();
 
-			int end = Tile.X + ItemDimension.X - 1;
+			int end = Tile.X + ItemDimension.X;
 			for (int i = Tile.X; i < end; i++)
 			{
 				for(int j = Tile.Y; j < Tile.Y + ItemDimension.Y; j++)
-				{
+				{					
 					int ItemArrayIndex =  TileToIndex(FVector2D(i,j));
-					ItemsArray[ItemArrayIndex] = ItemData;
+					if(ItemsArray.IsValidIndex(ItemArrayIndex))
+					{
+						ItemsArray[ItemArrayIndex] = ItemData;
+					}
 				}
 			}
 			NeedReload = true;
@@ -93,12 +98,12 @@ bool UInventoryComponent::IsRoomAvailable(UItemData *ItemData, int TopLeftIndex)
 	FVector2D Tile = IndexToTile(TopLeftIndex);
 	FVector2D ItemDimension = ItemData->GetDimensions();
 	
-	int end = Tile.X + ItemDimension.X - 1;
+	int end = Tile.X + ItemDimension.X;
 	for (int i = Tile.X; i < end; i++)
 	{
 		for(int j = Tile.Y; j < Tile.Y + ItemDimension.Y; j++)
 		{
-			if(i >= 0 && j >= 0)
+			if(i >= 0 && j >= 0 && i < GridSize.X && j < GridSize.Y)
 			{
 				// Check if we found valid item at current index
 				UItemData* Item = GetItemAtIndex(TileToIndex(FVector2D(i,j)));
@@ -115,21 +120,17 @@ bool UInventoryComponent::IsRoomAvailable(UItemData *ItemData, int TopLeftIndex)
 
 FVector2D UInventoryComponent::IndexToTile(int Index)
 {
-	if(InventoryWidget == nullptr) return FVector2D(0,0);
-	
-	FVector2D GridSize = InventoryWidget->GetGridSize();
+	if(InventoryWidget == nullptr) return FVector2D(0,0);	
 
 	int Columns =  GridSize.X;
 	int Rows = GridSize.Y;
 	
-	return FVector2D(Index % Columns, Index % Rows);
+	return FVector2D(Index % Columns, Index/Columns);
 }
 
 int UInventoryComponent::TileToIndex(FVector2D Tile)
 {
-	if(InventoryWidget == nullptr) return 0;
-
-	FVector2D GridSize = InventoryWidget->GetGridSize();
+	if(InventoryWidget == nullptr) return 0;	
 
 	return Tile.X + Tile.Y * GridSize.X;
 }
