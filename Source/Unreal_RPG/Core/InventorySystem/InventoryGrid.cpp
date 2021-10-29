@@ -3,6 +3,7 @@
 
 #include "InventoryGrid.h"
 
+#include "ItemWidget.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Components/Border.h"
 #include "Components/CanvasPanel.h"
@@ -11,9 +12,18 @@
 #include "Kismet/GameplayStatics.h"
 #include "Unreal_RPG/Characters/PlayerBase.h"
 
+
+UInventoryGrid::UInventoryGrid(const FObjectInitializer & ObjectInitializer) : Super(ObjectInitializer)
+{	
+	ConstructorHelpers::FClassFinder<UUserWidget> ItemWidgetBPClass(TEXT("/Game/UI/Inventory/WBP_Item"));
+	if(!ensure(ItemWidgetBPClass.Class != nullptr)) return;
+
+	ItemWidgetClass = ItemWidgetBPClass.Class;
+}
+
 void UInventoryGrid::CreateGrid(FVector2D GridSize)
 {
-	if(GridBorder == nullptr) return;		
+	if(GridBorder == nullptr || InventoryComponent == nullptr) return;		
 	
 	UCanvasPanelSlot* GridBorderSlot = Cast<UCanvasPanelSlot>(GridBorder->Slot);
 	GridBorderSlot->SetSize(GridSize * TileSize);
@@ -30,6 +40,8 @@ void UInventoryGrid::CreateGrid(FVector2D GridSize)
 		float LineY = i*TileSize;
 		Lines.Add(FVector4(0.0, LineY, TileSize * GridSize.X, LineY));
 	}
+	Refresh();
+	InventoryComponent->OnInventoryChanged().AddUObject(this, &UInventoryGrid::Refresh);
 }
 // Called by blueprint OnPaint event
 void UInventoryGrid::Paint(FPaintContext Context) const
@@ -47,6 +59,7 @@ void UInventoryGrid::Paint(FPaintContext Context) const
 void UInventoryGrid::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
+	
 	TArray<AActor*> Actors;
 	TSubclassOf<APlayerBase> PlayerClass = APlayerBase::StaticClass();
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), PlayerClass, Actors);
@@ -56,14 +69,42 @@ void UInventoryGrid::NativeOnInitialized()
 		if(PlayerBase != nullptr)
 		{
 			InventoryComponent = PlayerBase->GetInventory();
-			UE_LOG(LogTemp, Warning, TEXT("work"));
 		}
 	}
+	
+	ItemsWidget.SetNum(100);	
 }
 
 void UInventoryGrid::Refresh()
 {
-	//GridCanvasPanel->ClearChildren();
+	if(InventoryComponent == nullptr || GridCanvasPanel == nullptr) return;
+	
+	GridCanvasPanel->ClearChildren();
+	TMap<UItemData*, FVector2D> AllItems = InventoryComponent->GetAllItems();
+	
+	TArray<UItemData*> MapKeys;
+	AllItems.GetKeys(MapKeys);
+	
+	int Index = 0;
+	// Create Widget for every item in inventory
+	for(UItemData* Key : MapKeys)
+	{
+		ItemsWidget[Index] = Cast<UItemWidget>(CreateWidget(GetWorld()->GetFirstPlayerController(), ItemWidgetClass));
+		ItemsWidget[Index]->Initialise(TileSize, Key);	
+		ItemsWidget[Index]->OnRemove().AddUObject(this, &UInventoryGrid::OnItemRemoved);
+		GridCanvasPanel->AddChild(ItemsWidget[Index]);
+		
+
+		if(UCanvasPanelSlot* GridCanvasSlot = Cast<UCanvasPanelSlot>(GridCanvasPanel->Slot))
+		{
+			GridCanvasSlot->SetAutoSize(true);
+			GridCanvasSlot->SetPosition(AllItems[Key] * TileSize);
+		}		
+		Index++;
+	}
 }
 
-
+void UInventoryGrid::OnItemRemoved(UItemData* ItemData)
+{
+	InventoryComponent->RemoveItem(ItemData);
+}

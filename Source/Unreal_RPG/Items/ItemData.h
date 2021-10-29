@@ -17,6 +17,7 @@ public:
 	FVector2D GetDimensions() {return Dimensions;}
 	UFUNCTION(BlueprintCallable, meta = (AdvancedDisplay="Parameter1, Parameter2, Parameter3"))
 	void Initialise(FVector2D NewDimensions, UMaterialInterface* NewIcon, TSubclassOf<AItemBase> NewItem);
+	UMaterialInterface* GetIcon() const {return Icon; }
 	
 private:	
 	FVector2D Dimensions;

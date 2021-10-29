@@ -35,7 +35,11 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	if(NeedReload)
+	{
+		NeedReload = false;	
+		InventoryChangedEvent.Broadcast();
+	}
 }
 // Show/Hide inventory
 void UInventoryComponent::ToggleInventoryWidget()
@@ -55,7 +59,7 @@ void UInventoryComponent::ToggleInventoryWidget()
 	}	
 }
 
-bool UInventoryComponent::AddItem(UItemData* ItemData)
+bool UInventoryComponent::AddItem(UItemData* ItemData )
 {
 	if(ItemData == nullptr) return false;
 
@@ -98,7 +102,7 @@ bool UInventoryComponent::IsRoomAvailable(UItemData *ItemData, int TopLeftIndex)
 			{
 				// Check if we found valid item at current index
 				UItemData* Item = GetItemAtIndex(TileToIndex(FVector2D(i,j)));
-				if(IsValid(Item))
+				if(Item != nullptr)
 				{
 					return false;
 				}
@@ -139,3 +143,23 @@ UItemData* UInventoryComponent::GetItemAtIndex(int Index)
 	return nullptr;
 }
 
+TMap<UItemData*, FVector2D> UInventoryComponent::GetAllItems()
+{
+	TMap<UItemData*, FVector2D> AllItems;
+	int index = 0;
+	
+	for (UItemData* ItemData : ItemsArray)
+	{
+		if(ItemData != nullptr && !AllItems.Contains(ItemData))
+		{
+			AllItems.Add(ItemData, IndexToTile(index));
+		}
+		index++;
+	}
+	return AllItems;
+}
+
+void UInventoryComponent::RemoveItem(UItemData* ItemData)
+{
+	
+}

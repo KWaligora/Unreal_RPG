@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a02d243-3974-47c6-8f9b-7469863094d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/WBP_Inventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/WBP_Inventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/WPB_InventoryGrid.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/WPB_InventoryGrid.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Characters/PlayerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Characters/PlayerBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/WPB_Item.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/WPB_Item.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventoryComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryWidget.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unreal_RPG.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/Unreal_RPG.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Items/ItemData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Items/ItemData.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +151,8 @@
       <option name="presentableId" value="Default" />
       <updated>1635409862377</updated>
       <workItem from="1635409866130" duration="89000" />
+      <workItem from="1635501061459" duration="61000" />
+      <workItem from="1635509222030" duration="31000" />
     </task>
     <servers />
   </component>
@@ -163,7 +160,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

@@ -13,7 +13,11 @@ class UNREAL_RPG_API UInventoryComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
+
+	DECLARE_EVENT(UInventoryComponent, FInventoryChangedEvent)
+	FInventoryChangedEvent& OnInventoryChanged() {return InventoryChangedEvent; }
+	
 	// Sets default values for this component's properties
 	UInventoryComponent();
 
@@ -30,15 +34,20 @@ public:
 	// Show/Hide inventory
 	void ToggleInventoryWidget();
 	bool AddItem(UItemData* ItemData);
+	TMap<UItemData*, FVector2D> GetAllItems();
+	void RemoveItem(UItemData* ItemData);
 	
 private:
 // Variables
+	// Invent handle
+	FInventoryChangedEvent InventoryChangedEvent;
+	
 	// Widgets
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UUserWidget> InventoryWidgetClass;
 	UPROPERTY()
 	class UInventoryWidget* InventoryWidget;
-
+	
 	TArray<UItemData*> ItemsArray;
 	bool NeedReload = false;
 	
@@ -47,5 +56,4 @@ private:
 	FVector2D IndexToTile(int Index);
 	int TileToIndex(FVector2D Tile);
 	UItemData* GetItemAtIndex(int Index);
-	
 };
