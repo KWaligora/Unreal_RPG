@@ -8,7 +8,6 @@
 #include "Components/SizeBox.h"
 #include "Unreal_RPG/Items/ItemData.h"
 
-
 void UItemWidget::Initialise(int NewTileSize, UItemData* NewItemData)
 {
 	TileSize = NewTileSize;

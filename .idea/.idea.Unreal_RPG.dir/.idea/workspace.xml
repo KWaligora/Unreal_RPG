@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b0b4b615-505c-4534-a3b5-03f88f00467c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/InventoryGrid.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/ItemWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/ItemWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/ItemWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Core/InventorySystem/ItemWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Unreal_RPG/Items/ItemData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Unreal_RPG/Items/ItemData.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
       <workItem from="1635431981197" duration="3849000" />
       <workItem from="1635501432516" duration="7078000" />
       <workItem from="1635509325739" duration="11397000" />
-      <workItem from="1635523562763" duration="2412000" />
+      <workItem from="1635523562763" duration="3223000" />
     </task>
     <servers />
   </component>

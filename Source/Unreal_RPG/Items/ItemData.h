@@ -14,9 +14,10 @@ class UNREAL_RPG_API UItemData : public UObject
 	GENERATED_BODY()
 
 public:
-	FVector2D GetDimensions() {return Dimensions;}
 	UFUNCTION(BlueprintCallable, meta = (AdvancedDisplay="Parameter1, Parameter2, Parameter3"))
 	void Initialise(FVector2D NewDimensions, UMaterialInterface* NewIcon, TSubclassOf<AItemBase> NewItem);
+	
+	FVector2D GetDimensions() const {return Dimensions;}	
 	UMaterialInterface* GetIcon() const {return Icon; }
 	
 private:	

@@ -27,11 +27,9 @@ private:
 	// Refresh item visual representation in inventory
 	void Refresh();
 
-	//UPROPERTY(meta = (BindWidget))
-	UPROPERTY()
+	UPROPERTY(meta = (BindWidget))
 	class USizeBox* BackgroundSizeBox;
-	//UPROPERTY(meta = (BindWidget))
-	UPROPERTY()
+	UPROPERTY(meta = (BindWidget))
 	class UImage* ItemImage;
 	
 	UPROPERTY()
