@@ -41,7 +41,8 @@ private:
 // Variables
 	// Invent handle
 	FInventoryChangedEvent InventoryChangedEvent;
-	
+
+	FVector2D GridSize = FVector2D(5, 15);
 	// Widgets
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UUserWidget> InventoryWidgetClass;
