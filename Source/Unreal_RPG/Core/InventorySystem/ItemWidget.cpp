@@ -3,6 +3,7 @@
 
 #include "ItemWidget.h"
 
+#include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Components/Border.h"
 #include "Components/CanvasPanelSlot.h"
 #include "Components/Image.h"
@@ -30,6 +31,34 @@ void UItemWidget::NativeOnMouseLeave(const FPointerEvent& MovieSceneBlends)
 	if(BackgroundBorder == nullptr) return;
 
 	BackgroundBorder->SetBrushColor(FLinearColor(0, 0, 0, 0.5));
+}
+
+void UItemWidget::NativeOnDragDetected(const FGeometry& MovieSceneBlends, const FPointerEvent& InMouseEvent,
+	UDragDropOperation*& OutOperation)
+{
+	Super::NativeOnDragDetected(MovieSceneBlends, InMouseEvent, OutOperation);
+
+	if(DragDropOperationClass == nullptr) return;
+	DragDropOperation = UWidgetBlueprintLibrary::CreateDragDropOperation(DragDropOperationClass);
+	
+	if(ItemData == nullptr || DragDropOperation == nullptr) return;
+
+	DragDropOperation->Payload = ItemData;
+	DragDropOperation->DefaultDragVisual = this;
+	DragDropOperation->Pivot = EDragPivot::CenterCenter;
+
+	OutOperation = DragDropOperation;
+
+	RemoveEvent.Broadcast(ItemData);
+	RemoveFromParent();
+}
+
+FReply UItemWidget::NativeOnMouseButtonDown(const FGeometry& MovieSceneBlends, const FPointerEvent& InMouseEvent)
+{
+	Super::NativeOnMouseButtonDown(MovieSceneBlends, InMouseEvent);
+	
+	FEventReply Reply = UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
+	return Reply.NativeReply;
 }
 
 // Refresh item visual representation in inventory

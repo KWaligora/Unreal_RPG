@@ -20,8 +20,12 @@ public:
 	
 	void Initialise(int NewTileSize, UItemData* NewItemData);
 
+	// Events override
 	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	virtual void NativeOnMouseLeave(const FPointerEvent& InMouseEvent) override;
+	virtual void NativeOnDragDetected(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation) override;
+	virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+	
 	
 private:
 	// Event Handle
@@ -29,6 +33,12 @@ private:
 	
 	// Refresh item visual representation in inventory
 	void Refresh();
+
+	UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess = "true"))
+	TSubclassOf<UDragDropOperation> DragDropOperationClass;
+
+	UPROPERTY()
+	UDragDropOperation* DragDropOperation;
 	
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* BackgroundSizeBox;
