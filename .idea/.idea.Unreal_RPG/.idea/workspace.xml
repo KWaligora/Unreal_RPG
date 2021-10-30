@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a02d243-3974-47c6-8f9b-7469863094d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unreal_RPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unreal_RPG.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/Unreal_RPG.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +147,7 @@
       <workItem from="1635501061459" duration="61000" />
       <workItem from="1635509222030" duration="31000" />
       <workItem from="1635523467416" duration="48000" />
+      <workItem from="1635528529306" duration="21000" />
     </task>
     <servers />
   </component>

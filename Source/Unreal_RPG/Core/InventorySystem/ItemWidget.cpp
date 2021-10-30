@@ -3,6 +3,7 @@
 
 #include "ItemWidget.h"
 
+#include "Components/Border.h"
 #include "Components/CanvasPanelSlot.h"
 #include "Components/Image.h"
 #include "Components/SizeBox.h"
@@ -16,6 +17,21 @@ void UItemWidget::Initialise(int NewTileSize, UItemData* NewItemData)
 	Refresh();
 }
 
+void UItemWidget::NativeOnMouseEnter(const FGeometry& MovieSceneBlends, const FPointerEvent& InMouseEvent)
+{
+	Super::NativeOnMouseEnter(MovieSceneBlends, InMouseEvent);
+	if(BackgroundBorder == nullptr) return;
+	BackgroundBorder->SetBrushColor(FLinearColor(0.5, 0.5, 0.5, 0.2));	
+}
+
+void UItemWidget::NativeOnMouseLeave(const FPointerEvent& MovieSceneBlends)
+{
+	Super::NativeOnMouseLeave(MovieSceneBlends);
+	if(BackgroundBorder == nullptr) return;
+
+	BackgroundBorder->SetBrushColor(FLinearColor(0, 0, 0, 0.5));
+}
+
 // Refresh item visual representation in inventory
 void UItemWidget::Refresh()
 {	
@@ -23,11 +39,9 @@ void UItemWidget::Refresh()
 	
 	FVector2D ItemDimensions = ItemData->GetDimensions();
 	Size = ItemDimensions * TileSize;
-
-	if(UCanvasPanelSlot* SizeBoxSlot = Cast<UCanvasPanelSlot>(BackgroundSizeBox->Slot))
-	{
-		SizeBoxSlot->SetSize(Size);
-	}
+	
+	BackgroundSizeBox->HeightOverride = Size.Y;
+	BackgroundSizeBox->WidthOverride = Size.X;
 
 	if(UCanvasPanelSlot* ItemImageBoxSlot = Cast<UCanvasPanelSlot>(ItemImage->Slot))
 	{

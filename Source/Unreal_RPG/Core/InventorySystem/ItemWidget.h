@@ -19,6 +19,9 @@ public:
 	FRemoveEvent& OnRemove() {return RemoveEvent;}
 	
 	void Initialise(int NewTileSize, UItemData* NewItemData);
+
+	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+	virtual void NativeOnMouseLeave(const FPointerEvent& InMouseEvent) override;
 	
 private:
 	// Event Handle
@@ -26,11 +29,13 @@ private:
 	
 	// Refresh item visual representation in inventory
 	void Refresh();
-
+	
 	UPROPERTY(meta = (BindWidget))
 	class USizeBox* BackgroundSizeBox;
 	UPROPERTY(meta = (BindWidget))
 	class UImage* ItemImage;
+	UPROPERTY(meta = (BindWidget))
+	class UBorder* BackgroundBorder;
 	
 	UPROPERTY()
 	UItemData* ItemData = nullptr;
