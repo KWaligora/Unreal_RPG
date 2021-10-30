@@ -160,5 +160,15 @@ TMap<UItemData*, FVector2D> UInventoryComponent::GetAllItems()
 
 void UInventoryComponent::RemoveItem(UItemData* ItemData)
 {
-	
+	if(ItemData == nullptr) return;
+
+	int Index = 0;
+	for(UItemData* Item : ItemsArray)
+	{
+		if(Item == ItemData)
+		{
+			ItemsArray[Index] = nullptr;
+		}
+		Index++;
+	}
 }

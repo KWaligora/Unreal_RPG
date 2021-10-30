@@ -13,6 +13,7 @@ class UNREAL_RPG_API UInventoryWidget : public UUserWidget
 		
 public:	
 	FVector2D GetGridSize() {return GridSize;}
+	virtual bool NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
 	
 private:
 	UPROPERTY(meta = (BindWidget))

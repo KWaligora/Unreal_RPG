@@ -8,5 +8,5 @@ void UItemData::Initialise(FVector2D NewDimensions, UMaterialInterface* NewIcon,
 {
 	Dimensions = NewDimensions;
 	Icon = NewIcon;
-	Item = NewItem;
+	ItemClass = NewItem;
 }

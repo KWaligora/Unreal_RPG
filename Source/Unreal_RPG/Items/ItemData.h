@@ -19,10 +19,11 @@ public:
 	
 	FVector2D GetDimensions() const {return Dimensions;}	
 	UMaterialInterface* GetIcon() const {return Icon; }
+	TSubclassOf<AItemBase> GetItemClass() const {return ItemClass;}
 	
 private:	
 	FVector2D Dimensions;
 	UPROPERTY()
 	UMaterialInterface* Icon;	
-	TSubclassOf<AItemBase> Item;
+	TSubclassOf<AItemBase> ItemClass;
 };
