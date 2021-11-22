@@ -14,6 +14,7 @@ class UNREAL_RPG_API ARPG_PlayerController : public APlayerController
 public:
 	ARPG_PlayerController();
 	virtual void Tick(float DeltaSeconds) override;
+	
 
 protected:
 // Functions

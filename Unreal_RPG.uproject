@@ -10,6 +10,19 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"Engine",
+				"UMG",
+				"CoreUObject",
+				"FunctionalTesting"
+			]
+		},
+		{
+			"Name": "Unreal_RPG_Tests",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit",
+			"AdditionalDependencies": [
+				"Engine",
+				"UMG",
+				"CoreUObject",
 				"FunctionalTesting"
 			]
 		}
@@ -17,6 +30,14 @@
 	"Plugins": [
 		{
 			"Name": "FunctionalTestingEditor",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorTests",
+			"Enabled": true
+		},
+		{
+			"Name": "RuntimeTests",
 			"Enabled": true
 		}
 	]

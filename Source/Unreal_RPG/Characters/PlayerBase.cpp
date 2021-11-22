@@ -4,7 +4,9 @@
 #include "PlayerBase.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Unreal_RPG/Core/InventoryComponent.h"
 
 APlayerBase::APlayerBase()
 {
@@ -14,6 +16,8 @@ APlayerBase::APlayerBase()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
+
+	Inventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory"));
 
 	// Don't rotate character to camera direction
 	bUseControllerRotationPitch = false;
@@ -41,4 +45,14 @@ void APlayerBase::HandleDeath()
 {
 	Super::HandleDeath();
 	
+}
+
+void APlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	if(Inventory != nullptr)
+	{
+		InputComponent->BindAction("Inventory", IE_Pressed, Inventory, &UInventoryComponent::ToggleInventoryWidget);
+	}		
 }

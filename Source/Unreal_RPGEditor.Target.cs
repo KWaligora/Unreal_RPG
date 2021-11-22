@@ -10,5 +10,6 @@ public class Unreal_RPGEditorTarget : TargetRules
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		ExtraModuleNames.AddRange( new string[] { "Unreal_RPG" } );
+		ExtraModuleNames.AddRange( new string[] { "Unreal_RPG_Tests" } );
 	}
 }

@@ -22,9 +22,9 @@ void ARPG_PlayerController::Tick(float DeltaSeconds)
 void ARPG_PlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-
+	// Movement
 	InputComponent->BindAction("SetDestination", IE_Pressed, this, &ARPG_PlayerController::OnSetDestinationPressed);
-	InputComponent->BindAction("SetDestination", IE_Released, this, &ARPG_PlayerController::OnSetDestinationReleased);
+	InputComponent->BindAction("SetDestination", IE_Released, this, &ARPG_PlayerController::OnSetDestinationReleased);	
 }
 
 #pragma region Movement
